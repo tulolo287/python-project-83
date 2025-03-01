@@ -1,0 +1,15 @@
+*.egg-info
+__pycache__
+dist/
+*.pyc
+.venv
+.coverage
+coverage.xml
+*_cache/
+hello.py
+.vscode/
+.replit
+replit.nix
+*.cast
+.python-version
+.env
