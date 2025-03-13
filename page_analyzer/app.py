@@ -21,7 +21,7 @@ def index():
 def post_url():
     data = request.form.to_dict()
     url = data["url"]
-    today = datetime.date.today()
+    today = datetime.datetime.now()
     error = validate_url(url)
 
     if error:
@@ -51,7 +51,19 @@ def show_url(url_id):
     with conn.cursor(cursor_factory=NamedTupleCursor) as curs:
         curs.execute("SELECT * FROM urls WHERE id = %s;", (url_id,))
         url = curs.fetchone()
-    return render_template('urls/show_url.html', url=url)
+
+        curs.execute("SELECT * FROM url_checks WHERE url_id = %s;", (url_id,))
+        checks = curs.fetchall()
+    return render_template('urls/show_url.html', url=url, checks=checks)
+
+@app.post('/urls/<int:url_id>/checks')
+def check_url(url_id):
+    created_at = datetime.datetime.now()
+    with conn.cursor() as curs:
+        curs.execute("INSERT INTO url_checks (url_id, created_at) VALUES(%s, %s);", (url_id, created_at))
+        conn.commit()
+    flash('Страница успешно проверена', 'success')
+    return redirect(url_for('show_url', url_id=url_id), 302) 
 
 def validate_url(url):
     error = {}

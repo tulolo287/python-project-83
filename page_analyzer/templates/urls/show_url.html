@@ -23,7 +23,7 @@ content %}
   </div>
 
   <h2 class="mt-5 mb-3">Проверки</h2>
-  <form method="post" action="/urls/2/checks">
+  <form method="post" action="{{url_for('check_url', url_id=url.id)}}">
     <input type="submit" class="btn btn-primary" value="Запустить проверку" />
   </form>
 
@@ -39,7 +39,18 @@ content %}
           <th>Дата создания</th>
         </tr>
       </thead>
-      <tbody></tbody>
+      <tbody>
+        {% for check in checks %}
+        <tr>
+          <td>{{check.id}}</td>
+          <td>{{check.status}}</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>{{check.created_at}}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
     </table>
   </div>
 </div>
