@@ -1,7 +1,7 @@
 {% extends 'base.html' %} {% block title %} {{url.name}} {% endblock %} {% block
 content %}
 <div class="container-lg mt-3" bis_skin_checked="1">
-  <h1>Сайт: https://www.yandex.ru</h1>
+  <h1>Сайт: {{url.name}}</h1>
 
   <div class="table-responsive" bis_skin_checked="1">
     <table class="table table-bordered table-hover text-nowrap" data-test="url">
@@ -23,7 +23,10 @@ content %}
   </div>
 
   <h2 class="mt-5 mb-3">Проверки</h2>
-  <form method="post" action="{{url_for('check_url', url_id=url.id)}}">
+  <form
+    method="post"
+    action="{{url_for('check_url', url_id=url.id, url_name=url.name)}}"
+  >
     <input type="submit" class="btn btn-primary" value="Запустить проверку" />
   </form>
 
@@ -43,10 +46,10 @@ content %}
         {% for check in checks %}
         <tr>
           <td>{{check.id}}</td>
-          <td>{{check.status}}</td>
-          <td></td>
-          <td></td>
-          <td></td>
+          <td>{{check.status_code}}</td>
+          <td>{{check.h1}}</td>
+          <td>{{check.title}}</td>
+          <td>{{check.description}}</td>
           <td>{{check.created_at}}</td>
         </tr>
         {% endfor %}
