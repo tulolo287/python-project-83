@@ -1,0 +1,26 @@
+/du
+du
+dt
+/dt
+/help
+help
+\du
+\dt
+\dt
+CREATE USER postgres WITH PASSWORD 'postgres' CREATEDB;
+"CREATE USER postgres WITH PASSWORD 'postgres' CREATEDB;"
+\du
+\dt
+"CREATE USER postgres WITH PASSWORD 'postgres' CREATEDB"
+\du
+CREATE USER postgres WITH PASSWORD 'postgres' CREATEDB
+createuser -P -d -e postgres
+\du
+\dt
+\du
+\du
+\du
+\h
+\?
+\d
+\s urls
