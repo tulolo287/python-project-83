@@ -25,7 +25,7 @@ content %}
   <h2 class="mt-5 mb-3">Проверки</h2>
   <form
     method="post"
-    action="{{url_for('check_url', url_id=url.id, url_name=url.name)}}"
+    action="{{url_for('check_url', id=url.id, url=url.name)}}"
   >
     <input type="submit" class="btn btn-primary" value="Запустить проверку" />
   </form>

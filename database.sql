@@ -1,7 +1,7 @@
 CREATE TABLE IF NOT EXISTS urls (
   id integer primary key NOT NULL GENERATED ALWAYS AS IDENTITY,
   name varchar(255) not null,
-  created_at timestamp null
+  created_at date null
 );
 
 CREATE TABLE IF NOT EXISTS url_checks (
@@ -11,5 +11,5 @@ CREATE TABLE IF NOT EXISTS url_checks (
   h1 varchar(100),
   title varchar(100),
   description text,
-  created_at timestamp null
+  created_at date null
 );
